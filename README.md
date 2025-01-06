@@ -296,7 +296,7 @@ Total storage for 10 years = 2TB x 365 x 10 ~ 8 PB
 ### APIs
 
 1. View restaurants, `/restaurant`\
-   `getRestaurants(api_dev_key, userID: string, userLocation: vector<double>): vector<Restaurant>`\
+   `getRestaurants(api_dev_key, userID: string, userLocation: vector<double>): vector<Restaurant>`
 
 2. View menu of a restaurant, `/menu/{id}`\
    `getMenu(api_dev_key, restaurantID: string): Menu`
