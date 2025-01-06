@@ -44,7 +44,7 @@ Assume 100 million daily users and 10 million rides booked with 10 million drive
 ### APIs
 
 1. Find cabs from source to destination.
-   `getRide(api_dev_key: string, userID: string, source: vector<double>, destination: vector<double>): vector<Cabs>`
+   ```getRide(api_dev_key: string, userID: string, source: vector<double>, destination: vector<double>): vector<Cabs>```
    This API takes source and destination of the User and return list of cab options, cab types with pricing and ETA.
 
 2. Select cab
