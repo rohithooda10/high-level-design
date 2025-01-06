@@ -1,4 +1,10 @@
 # System Design
+This repo contains high level system design for few applications.
+
+## Table of content
+[Ride Booking App](#Ride-Booking-App)
+[Messaging App](#Messaging-App)
+[Food Delivery App](#Food-Delivery-App)
 
 ## Ride Booking App
 
@@ -43,30 +49,30 @@ Assume 100 million daily users and 10 million rides booked with 10 million drive
 
 ### APIs
 
-1. Find cabs from source to destination.
-   ```getRide(api_dev_key: string, userID: string, source: vector<double>, destination: vector<double>): vector<Cabs>```
+1. Find cabs from source to destination.\
+   `getRide(api_dev_key: string, userID: string, source: vector<double>, destination: vector<double>): vector<Cabs>`\
    This API takes source and destination of the User and return list of cab options, cab types with pricing and ETA.
 
-2. Select cab
-   `bookRide(api_dev_key: string, userID: string, source: vector<double>, destination: vector<double>, cabType: ENUM<string>): Ride`
+2. Select cab\
+   `bookRide(api_dev_key: string, userID: string, source: vector<double>, destination: vector<double>, cabType: ENUM<string>): Ride`\
    This API takes source, destination and cabType and return the ride.
 
-3. Accept ride / Deny ride
-   `acceptRide(api_dev_key: string, rideID: string): boolean`
-   `denyRide(api_dev_key: string, rideID: string): boolean`
+3. Accept ride / Deny ride\
+   `acceptRide(api_dev_key: string, rideID: string): boolean`\
+   `denyRide(api_dev_key: string, rideID: string): boolean`\
    These APIs allows driver to accept or deny the ride.
 
-4. Start ride / end ride
-   `startRide(api_dev_key: string, rideID: string): boolean`
-   `endRide(api_dev_key: string, rideID: string): boolean`
+4. Start ride / end ride\
+   `startRide(api_dev_key: string, rideID: string): boolean`\
+   `endRide(api_dev_key: string, rideID: string): boolean`\
    These APIs allows driver to start or end the ride.
 
-5. Pay for the ride
-   `pay(api_dev_key: string, rideID: string, paymentID: string): boolean`
-   This API allows user to pay for the ride. Payment APIs needs to be **idempotent** so payment retries don't ruin consistency of data.
+5. Pay for the ride\
+   `pay(api_dev_key: string, rideID: string, paymentID: string): boolean`\
+   This API allows user to pay for the ride. Payment APIs needs to be **idempotent** so payment retries don't ruin consistency of data.\
 
-6. Rate the ride
-   `rateRide(api_dev_key: string, rideID: string, start: int, feedback?: string): boolean`
+6. Rate the ride\
+   `rateRide(api_dev_key: string, rideID: string, start: int, feedback?: string): boolean`\
    This API allows user to rare the ride after completion.
 
 ### Data Models
@@ -174,17 +180,17 @@ Total data = (2 bil x 200) + (100 mil x 100KB) = 4 x 10^11 + 10^13 ~ 10 TB
 
 ### APIs
 
-1. Send message
+1. Send message\
    `sendMessage(api_dev_key, userID: string, content: string, mediaURL: string): boolean`
 
-2. Join / Leave group
-   `joinGroup(api_dev_key, groupID, userID): boolean`
+2. Join / Leave group\
+   `joinGroup(api_dev_key, groupID, userID): boolean`\
    `leaveGroup(api_dev_key, groupID, userID): boolean`
 
-3. Get all messages
+3. Get all messages\
    `getMessages(api_dev_key, userID: string, channelID): vector<ChatMessage>`
 
-4. Get all chats / groups
+4. Get all chats / groups\
    `getChats(api_dev_key, userID: string): vector<Chat> | vector<Group>`
 
 ### Services
@@ -289,35 +295,35 @@ Total storage for 10 years = 2TB x 365 x 10 ~ 8 PB
 
 ### APIs
 
-1. View restaurants, `/restaurant`
-   `getRestaurants(api_dev_key, userID: string, userLocation: vector<double>): vector<Restaurant>`
+1. View restaurants, `/restaurant`\
+   `getRestaurants(api_dev_key, userID: string, userLocation: vector<double>): vector<Restaurant>`\
 
-2. View menu of a restaurant, `/menu/{id}`
+2. View menu of a restaurant, `/menu/{id}`\
    `getMenu(api_dev_key, restaurantID: string): Menu`
 
-3. Add item to cart, `/cart/{id}`
+3. Add item to cart, `/cart/{id}`\
    `addItem(api_dev_key, menuID: string, userID: string, menuItemID: string): boolean`
 
-4. Place order
+4. Place order\
    `placeOrder(api_dev_key, userID: string, cartID: string, userLocation: vector<double>): orderID: string`
 
-5. Accept / Deny order
-   `acceptOrder(api_dev_key, orderID): boolean`
+5. Accept / Deny order\
+   `acceptOrder(api_dev_key, orderID): boolean`\
    `denyOrder(api_dev_key, orderID): boolean`
 
-6. Start / End order
-   `startOrder(api_dev_key, orderID): boolean`
+6. Start / End order\
+   `startOrder(api_dev_key, orderID): boolean`\
    `endOrder(api_dev_key, orderID): boolean`
-7. Share location
+7. Share location\
    `shareLocation(api_dev_key, location: vector<double>, agentID: string): boolean`
 
-8. Pay for the order
+8. Pay for the order\
    `pay(api_dev_key, orderID: string, userID: string, paymentID: string, paymentMethod: ENUM<string>): boolean`
 
-9. Add menu items
+9. Add menu items\
    `addMenuItem(api_dev_key, restaurantID: string, menuID: string, item: string): boolean`
 
-10. Add menu
+10. Add menu\
     `addMenu(api_dev_key, restaurantID: string, menuID: string): boolean`
 
 ### Services
