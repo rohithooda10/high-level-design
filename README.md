@@ -2,8 +2,8 @@
 This repo contains high level system design for few applications.
 
 ## Table of content
-[Ride Booking App](#Ride-Booking-App)
-[Messaging App](#Messaging-App)
+[Ride Booking App](#Ride-Booking-App)\
+[Messaging App](#Messaging-App)\
 [Food Delivery App](#Food-Delivery-App)
 
 ## Ride Booking App
